@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 /**
  * Created by chaoranchen on 3/21/17.
  */
@@ -7,7 +5,7 @@ import java.lang.reflect.Array;
 public class Mergesort {
     public static <T extends Comparable<T>> T[] merge(T[] arr1, T[] arr2) {
         //T[] res = (T[])new Object[arr1.length + arr2.length]; // This does not work!
-        T[] res = (T[]) Array.newInstance(arr1.getClass().getComponentType(), arr1.length + arr2.length);
+        T[] res = (T[]) new Comparable[arr1.length + arr2.length];
 
         int i = 0, j = 0;
         for (int k = 0; k < res.length; k++) {
@@ -33,8 +31,8 @@ public class Mergesort {
             return arr;
         /* Split the original array into two sub-arrays
         * and copy the contents into them*/
-        T[] L = (T[]) Array.newInstance(arr.getClass().getComponentType(), arr.length / 2);
-        T[] R = (T[]) Array.newInstance(arr.getClass().getComponentType(), arr.length - arr.length / 2);
+        T[] L = (T[]) new Comparable[ arr.length / 2];
+        T[] R = (T[]) new Comparable[arr.length - arr.length / 2];
         /* Copy the contents */
         for (int i = 0; i < L.length; i++)
             L[i] = arr[i];
