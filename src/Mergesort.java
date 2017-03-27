@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Created by chaoranchen on 3/21/17.
  */
@@ -52,8 +54,8 @@ public class Mergesort {
         System.out.println("Test merge():");
         String[] L = {"a", "c"};
         String[] R = {"b", "d", "e"};
-        String[] res = merge(L, R);
-        for (String i : res) {
+        Object[] res = merge(L, R);
+        for (Object i : res) {
             System.out.print(i + " ");
         }
         System.out.println();
@@ -61,9 +63,9 @@ public class Mergesort {
         /* Test mergesort() */
         System.out.println("Test mergesort():");
         Integer[] a = {2, 1, 4, 3, 5};
-        Integer[] ans = mergesort(a);
+        Object[] ans = mergesort(a);
 
-        for (Integer i : ans) {
+        for (Object i : ans) {
             System.out.print(i + " ");
         }
         System.out.println();
