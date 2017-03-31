@@ -1,4 +1,3 @@
-import org.junit.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,6 +6,7 @@ import static org.junit.Assert.*;
  * Created by chen4393 on 3/21/17.
  */
 public class MergesortTest {
+
     @org.junit.Test
     public void merge1() throws Exception {
         /* Test case 1: Integer array with different length */
@@ -96,6 +96,45 @@ public class MergesortTest {
         String[] a = {"b", "a", "f", "e", "c", "d", "b"};
         Object[] actual = Mergesort.mergesort(a);
         String[] expected = {"a", "b", "b", "c", "d", "e", "f"};
+        boolean result = true;
+        for (int i = 0; i < expected.length; i++) {
+            if (!expected[i].equals(actual[i])) {
+                result = false;
+                break;
+            }
+        }
+        assertTrue(result);
+    }
+
+    @Test
+    public void merge4() throws Exception {
+        String[] L = {"ca", "bc", "ae"};
+        String[] R = {"cca", "cd", "e"};
+        ReverseStringComparator rscomp = new ReverseStringComparator();
+        Object[] expected = Mergesort.merge(L, R, rscomp);
+        Object[] actual = {"ca", "cca", "bc", "cd", "e", "ae"};
+        boolean result = true;
+        if (expected.length != actual.length) {
+            assertTrue(false);
+        }
+        for (int i = 0; i < expected.length; i++) {
+            if (!expected[i].equals(actual[i])) {
+                result = false;
+                break;
+            }
+        }
+        assertTrue(result);
+    }
+
+    @Test
+    public void mergesort4() throws Exception {
+        String[] a = {"b", "a", "f", "e", "c", "d", "b"};
+        ReverseStringComparator rscomp = new ReverseStringComparator();
+        Object[] actual = Mergesort.mergesort(a, rscomp);
+        String[] expected = {"a", "b", "b", "c", "d", "e", "f"};
+        if (expected.length != actual.length) {
+            assertTrue(false);
+        }
         boolean result = true;
         for (int i = 0; i < expected.length; i++) {
             if (!expected[i].equals(actual[i])) {
